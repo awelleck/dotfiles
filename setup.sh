@@ -25,7 +25,7 @@ if [ -d $backup_dir ]; then
 
 			for (( b=0; b<5; b++ ))
 			do
-				if [ -f ${FILES[$b]} ] && [-d $backup_dir$a ]; then
+				if [ -f ${FILES[$b]} ] && [ -d $backup_dir$a ]; then
 					echo "THe following file exists: ${FILES[$b]}"
 					mv ${FILES[$b]} $backup_dir$a
 				elif [ ! -f ${FILES[$b]} ]; then
@@ -72,6 +72,7 @@ if [ -d $vim_colors ]; then
 	echo "The ~/.vim/colors directory alreay exists."
 else
 	echo "Creating .vim/colors directory..."
+	mkdir $HOME/.vim
 	mkdir $HOME/.vim/colors
 fi
 
