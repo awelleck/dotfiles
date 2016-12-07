@@ -54,18 +54,18 @@ elif [ ! -d $backup_dir ]; then
 fi
 
 #check if each of the files in the array exist
-for (( b=0; b<5; b++ ))
-do
-	if [ -f ${FILES[$b]} ] && [ -d $backup_dir ]; then
-		echo "The following file exists: ${FILES[$b]}"
-		mv ${FILES[$b]} $backup_dir
-	elif [ -f ${FILES[$b]} ] && [ -d $backup_dir$a ]; then
-		echo "THe following file exists: ${FILES[$b]}"
-		mv ${FILES[$b]} $backup_dir$a
-	elif [ ! -f ${FILES[$b]} ]; then
-		echo "The following file does not exist: ${FILES[$b]}"
-	fi
-done
+#for (( b=0; b<5; b++ ))
+#do
+#	if [ -f ${FILES[$b]} ] && [ -d $backup_dir ]; then
+#		echo "The following file exists: ${FILES[$b]}"
+#		mv ${FILES[$b]} $backup_dir
+#	elif [ -f ${FILES[$b]} ] && [ -d $backup_dir$a ]; then
+#		echo "THe following file exists: ${FILES[$b]}"
+#		mv ${FILES[$b]} $backup_dir$a
+#	elif [ ! -f ${FILES[$b]} ]; then
+#		echo "The following file does not exist: ${FILES[$b]}"
+#	fi
+#done
 
 #Check if ~/.vim/colors exists, if not create it
 if [ -d $vim_colors ]; then
