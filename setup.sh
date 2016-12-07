@@ -7,7 +7,7 @@ bash_profile=$HOME/.bash_profile
 alias_file=$HOME/.alias
 gitconfig=$HOME/.gitconfig
 
-FILES[0]=$vimrc
+FILES[0]=$vimrc_file
 FILES[1]=$vim_colors
 FILES[2]=$bash_profile
 FILES[3]=$alias_file
