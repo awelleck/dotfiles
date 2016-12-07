@@ -44,7 +44,7 @@ elif [ ! -d $backup_dir ]; then
 
 	for (( b=0; b<5; b++ ))
 	do
-		if [ -f ${FILES[$b]} ] && [-d $backup_dir ]; then
+		if [ -f ${FILES[$b]} ] && [ -d $backup_dir ]; then
 			echo "The following file exists: ${FILES[$b]}"
 			mv ${FILES[$b]} $backup_dir
 		elif [ ! -f ${FILES[$b]} ]; then
@@ -56,10 +56,10 @@ fi
 #check if each of the files in the array exist
 for (( b=0; b<5; b++ ))
 do
-	if [ -f ${FILES[$b]} ] && [-d $backup_dir ]; then
+	if [ -f ${FILES[$b]} ] && [ -d $backup_dir ]; then
 		echo "The following file exists: ${FILES[$b]}"
 		mv ${FILES[$b]} $backup_dir
-	elif [ -f ${FILES[$b]} ] && [-d $backup_dir$a ]; then
+	elif [ -f ${FILES[$b]} ] && [ -d $backup_dir$a ]; then
 		echo "THe following file exists: ${FILES[$b]}"
 		mv ${FILES[$b]} $backup_dir$a
 	elif [ ! -f ${FILES[$b]} ]; then
@@ -72,7 +72,7 @@ if [ -d $vim_colors ]; then
 	echo "The ~/.vim/colors directory alreay exists."
 else
 	echo "Creating .vim/colors directory..."
-	mkdir "$HOME/.vim/colors"
+	mkdir $HOME/.vim/colors
 fi
 
 current_dir=$(pwd)
