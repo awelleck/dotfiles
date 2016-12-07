@@ -2,6 +2,7 @@
 backup_dir=$HOME/dotfiles_backup
 vimrc_file=$HOME/.vimrc
 vim_colors=$HOME/.vim/colors/lyla.vim
+vim_colors_dir=$HOME/.vim/colors
 bash_profile=$HOME/.bash_profile
 alias_file=$HOME/.alias
 gitconfig=$HOME/.gitconfig
@@ -26,7 +27,7 @@ if [ -d $backup_dir ]; then
 			for (( b=0; b<5; b++ ))
 			do
 				if [ -f ${FILES[$b]} ] && [ -d $backup_dir$a ]; then
-					echo "THe following file exists: ${FILES[$b]}"
+					echo "The following file exists: ${FILES[$b]}"
 					mv ${FILES[$b]} $backup_dir$a
 				elif [ ! -f ${FILES[$b]} ]; then
 					echo "The following file does not exist: ${FILES[$b]}"
@@ -68,9 +69,9 @@ fi
 #done
 
 #Check if ~/.vim/colors exists, if not create it
-if [ -d $vim_colors ]; then
+if [ -d $vim_colors_dir ]; then
 	echo "The ~/.vim/colors directory alreay exists."
-else
+elif [ ! -d $vim_colors_dir ]; then
 	echo "Creating .vim/colors directory..."
 	mkdir $HOME/.vim
 	mkdir $HOME/.vim/colors
