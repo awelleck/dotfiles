@@ -15,16 +15,15 @@ Give the script permission to execute:
 Run the setup.sh script:
 `./setup.sh`
 
-The setup.sh installation script will move any dotfiles that already exits in the `$HOME` directory that would otherwise be overwritten. You can find your already existing dotfiles in the `dotfiles_backup` directory that is created. The script is safe to re-run, the `dotfile_backup` directory won't get overwritten, a new `dotfiles_backup1` etc. will be created.
+The setup.sh installation script will move any dotfiles that already exist in the `$HOME` directory that would otherwise be overwritten. You can find your already existing dotfiles in the `dotfiles_backup` directory that is created. The script is safe to re-run, the `dotfile_backup` directory won't get overwritten, a new `dotfiles_backup1` etc. will be created.
 
-If you prefer to setup the file individually you can clone this repository:
+If you prefer to setup the files individually you can clone this repository:
 
 `git clone https://github.com/awelleck/dotfiles.git` using HTTPS.
 
-## TODO
-* Add .bash_profile
-* Change lyla vim color to wombat256dave
-* Clean up setup.sh output
+## Notes about .bash_profile vs .bashrc
+
+Most login shells use the `.bashrc` file, for example Ubuntu's GNOME Terminal. Mac OSX is an exception, the Terminal.app runs a login shell each time a terminal window is opened and `.bash_profile` is called by default. I source my `.bashrc` file when my `.bash_profile` is called and keep any PATH settings in the former.
 
 ## License
 
