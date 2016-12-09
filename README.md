@@ -1,4 +1,5 @@
 # dotfiles
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 
 Dotfiles on Unix/Linux are hidden configuration files. My goal is to consolidate and backup any configs I adopt and use GitHub as a way to sync them. I generally don't prefer a ton of customization and like to understand all configurations I enable. As I find additional configurations I will add them to this repository.
 
@@ -22,8 +23,7 @@ If you prefer to setup the file individually you can clone this repository:
 
 ## TODO
 * Add .bash_profile
-* Add GNU license
-* Change lyla vim color to vombat256dave
+* Change lyla vim color to wombat256dave
 * Clean up setup.sh output
 
 ## License
