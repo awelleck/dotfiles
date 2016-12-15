@@ -3,3 +3,7 @@
 
 [core]
 	editor = vim
+
+[alias]
+	# Delete local branches which have alread been merged into master
+	local-cleanup = branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d
