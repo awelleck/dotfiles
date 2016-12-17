@@ -7,3 +7,4 @@ export EDITOR=/usr/bin/vim 		#sets default editor
 export CLICOLOR=1 			#enable colors in terminal
 LSCOLORS=exfxcxdxbxegedabagacad 	#color scheme
 alias qfind="find . -name " 		#qfind: Quickly search for file
+alias qgrep="grep -nriI "		#qgrep: grep with line number from file, recursively, ignoring case, skipping binary files
