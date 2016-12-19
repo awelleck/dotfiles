@@ -1,7 +1,8 @@
-#new_setup.sh
+#!/bin/bash
 
 backup_dir=$HOME/dotfiles_backup
-tmp_dir=$HOME/tmp/dotfiles
+FILENAME=`date +%Y.%m.%d-%H.%M.%S`
+tmp_dir=/tmp/dotfiles_$FILENAME
 
 vimrc_file=$HOME/.vimrc
 vim_colors=$HOME/.vim/colors/wombat256dave.vim
@@ -9,6 +10,7 @@ vim_colors_dir=$HOME/.vim/colors
 gitconfig=$HOME/.gitconfig
 bash_profile=$HOME/.bash_profile
 
+#Array for dotfiles
 FILES=($vimrc_file $vim_colors $gitconfig $bash_profile)
 
 
@@ -16,42 +18,46 @@ echo "Setup script for dotfiles:"
 echo "=========================="
 
 #Check if /tmp/dotfiles exists, if not create it
-if [ ! -d $tmp_dir ]; then
+if [ -d $tmp_dir ]; then
+	echo "Error: the $tmp_dir directory already exists"
+elif [ ! -d $tmp_dir ]; then
 	mkdir -p $tmp_dir
-elif [ -d $tmp_dir ]; then
-	echo "The /tmp/dotfiles directory already exists"
 fi
 
 
-for (( b=0; b<${#FILES[@]}; b++ ))
+#Check if ~/dotfile_backup exists, if not create it
+if [ -d $backup_dir ]; then
+	echo "The /dotfile_backup directory already exists"
+elif [ ! -d $backup_dir ]; then
+	echo "Creating dotfiles_backup directory"
+	mkdir $backup_dir
+fi
+
+
+#Loop through dotfiles, move them to /tmp if any exist
+for (( a=0; a<${#FILES[@]}; a++ ))
 do
-	if [ -f ${FILES[$b]} ] && [ -d $backup_dir$a ]; then
-		echo "The following file exists: ${FILES[$b]}"
-		mv ${FILES[$b]} $tmp_dir
-	elif [ ! -f ${FILES[$b]} ]; then
-		echo "The following file DOES NOT exist: ${FILES[$b]}"
+	if [ -f ${FILES[$a]} ] && [ -d $backup_dir ]; then
+		echo "The following file exists: ${FILES[$a]}"
+		mv ${FILES[$a]} $tmp_dir
+	elif [ ! -f ${FILES[$a]} ]; then
+		echo "The following file DOES NOT exist: ${FILES[$a]}"
 	fi
 done
 
 
-#Check if /dotfile_backup exists, if not create it
-if [ ! -d $backup_dir ]; then
-	mkdir $backup_dir
-elif [ -d $backup_dir ]; then
-	echo "The /dotfile_backup directory already exists"
-fi
+#Zip and move .zip to ~/dotfiles_backup
+cd /tmp
+zip -r $FILENAME.zip ./dotfiles_$FILENAME
+mv $FILENAME.zip $backup_dir
 
-#Zip and mv /dotfiles dir to /dotfiles_back
-#Name .zip 2016.12.16-23:01.zip
-TIME=`date +%H.%M`
-DATE=`date +%Y.%m.%d`
 
 #Check if ~/.vim/colors exists, if not create it
 if [ -d $vim_colors_dir ]; then
 	echo "The ~/.vim/colors directory alreay exists"
 elif [ ! -d $vim_colors_dir ]; then
 	echo "Creating .vim/colors directory"
-	mkdir -p $HOME/.vim/colors
+	mkdir -p $vim_colors_dir
 fi
 
 
@@ -63,5 +69,5 @@ cd $HOME/ && curl -sS -O https://raw.githubusercontent.com/awelleck/dotfiles/mas
 cd $current_dir
 
 #Cleanup /tmp/dotfiles directory
-#rm -r $tmp_dir
+rm -r $tmp_dir
 echo "Done!"
