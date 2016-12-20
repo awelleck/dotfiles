@@ -15,7 +15,7 @@ Give the script permission to execute:
 Run the setup.sh script:
 `./setup.sh`
 
-The setup.sh installation script will move any dotfiles that already exist in the `$HOME` directory that would otherwise be overwritten. You can find your already existing dotfiles in the `dotfiles_backup` directory that is created. The script is safe to re-run, the `dotfile_backup` directory won't get overwritten, a new `dotfiles_backup1` etc. will be created.
+The setup.sh installation script will zip any dotfiles that already exist in the `$HOME` directory that would otherwise be overwritten. You can find your backed up, zipped dotfiles in the `$HOME/dotfiles_backup` directory that is created. The script is safe to re-run, the zip files will be named `yyyy.mm.dd-hh.mm.ss.zip`.
 
 If you prefer to setup the files individually you can clone this repository:
 
