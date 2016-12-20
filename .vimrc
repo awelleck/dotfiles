@@ -1,4 +1,4 @@
-colorscheme lyla		" color
+colorscheme wombat256dave	" color
 set number			" show line numbers
 set showcmd			" show command in bottom bar
 set hlsearch			" highlight search matches
