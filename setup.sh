@@ -9,9 +9,10 @@ vim_colors=$HOME/.vim/colors/wombat256dave.vim
 vim_colors_dir=$HOME/.vim/colors
 gitconfig=$HOME/.gitconfig
 bash_profile=$HOME/.bash_profile
+tmux=$HOME/.tmux.conf
 
 #Array for dotfiles
-FILES=($vimrc_file $vim_colors $gitconfig $bash_profile)
+FILES=($vimrc_file $vim_colors $gitconfig $bash_profile $tmux)
 
 
 echo "Setup script for dotfiles:"
@@ -66,6 +67,7 @@ cd $HOME/ && curl -sS -O https://raw.githubusercontent.com/awelleck/dotfiles/mas
 cd $HOME/.vim/colors && curl -sS -O https://raw.githubusercontent.com/davb5/wombat256dave/master/colors/wombat256dave.vim
 cd $HOME/ && curl -sS -O https://raw.githubusercontent.com/awelleck/dotfiles/master/.gitconfig
 cd $HOME/ && curl -sS -O https://raw.githubusercontent.com/awelleck/dotfiles/master/.bash_profile
+cd $HOME/ && curl -sS -O https://raw.githubusercontent.com/awelleck/dotfiles/master/.tmux.conf
 cd $current_dir
 
 #Cleanup /tmp/dotfiles directory
